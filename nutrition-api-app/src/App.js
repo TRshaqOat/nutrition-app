@@ -22,8 +22,9 @@ function App() {
       try {
         try {
           const response = await axios.request(options);
-          setData(response.data);
+          setData(response.data[0]);
           console.log(response.data);
+          console.log(response.data[0].calories);
         } catch (error) {
           console.error(error);
         }

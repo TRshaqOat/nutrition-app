@@ -67,20 +67,22 @@ function App() {
         {data.name !== undefined && (
           <div className="bottom">
             <div className="feels">
-              {data.main ? (
-                <p className="bold">{data.main.feels_like.toFixed()}°F</p>
+              {data.calories ? (
+                <p className="bold">{data.serving_size_g}g</p>
               ) : null}
-              <p>Feels Like</p>
+              <p>Serving Size</p>
             </div>
             <div className="humidity">
-              {data.main ? <p className="bold">{data.main.humidity}%</p> : null}
-              <p>Humidity</p>
+              {data.calories ? (
+                <p className="bold">{data.fat_total_g}g</p>
+              ) : null}
+              <p>Fat Total</p>
             </div>
             <div className="wind">
-              {data.wind ? (
-                <p className="bold">{data.wind.speed.toFixed()} MPH</p>
+              {data.calories ? (
+                <p className="bold">{data.fat_saturated_g}g</p>
               ) : null}
-              <p>Wind Speed</p>
+              <p>Saturated Fat</p>
             </div>
           </div>
         )}

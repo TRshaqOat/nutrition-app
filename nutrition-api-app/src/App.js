@@ -4,14 +4,14 @@ import axios from "axios";
 
 function App() {
   const [data, setData] = useState({});
-  const [location, setLocation] = useState("");
+  const [food, setFood] = useState("");
 
-  const searchLocation = async (event) => {
+  const searchFood = async (event) => {
     const options = {
       method: "GET",
       url: "https://nutrition-by-api-ninjas.p.rapidapi.com/v1/nutrition",
       params: {
-        query: location,
+        query: food,
       },
       headers: {
         "X-RapidAPI-Key": "c6d00b02demsh6fbd40f27f235a2p16f75djsn6538ec2274e0",
@@ -22,6 +22,10 @@ function App() {
       try {
         try {
           const response = await axios.request(options);
+          if (response.data.size > 1) {
+            console.log(response.data.length + " Items");
+          }
+          console.log(response.data.length + " Items");
           setData(response.data[0]);
           console.log(response.data);
           console.log(response.data[0].calories);
@@ -29,7 +33,7 @@ function App() {
           console.error(error);
         }
 
-        setLocation("");
+        setFood("");
       } catch (error) {
         console.error("Error:", error);
       }
@@ -40,20 +44,20 @@ function App() {
     <div className="app">
       <div className="search">
         <input
-          value={location}
-          onChange={(event) => setLocation(event.target.value)}
-          onKeyDown={searchLocation}
-          placeholder="Enter Location"
+          value={food}
+          onChange={(event) => setFood(event.target.value)}
+          onKeyDown={searchFood}
+          placeholder="Enter Food"
           type="text"
         />
       </div>
       <div className="container">
         <div className="top">
-          <div className="location">
-            <p>{data.calories}</p>
+          <div className="food">
+            <p>{data.name}</p>
           </div>
           <div className="temp">
-            {data.main ? <h1>{data.main.temp.toFixed()}°F</h1> : null}
+            {data.calories ? <h1>{data.calories} Calories</h1> : null}
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}

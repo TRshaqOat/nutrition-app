@@ -47,7 +47,7 @@ function App() {
           value={food}
           onChange={(event) => setFood(event.target.value)}
           onKeyDown={searchFood}
-          placeholder="Enter Food"
+          placeholder="Enter Ingredients"
           type="text"
         />
       </div>
@@ -59,30 +59,28 @@ function App() {
           <div className="temp">
             {data.calories ? <h1>{data.calories} Calories</h1> : null}
           </div>
-          <div className="description">
+          {/* <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
-          </div>
+          </div> */}
         </div>
 
         {data.name !== undefined && (
           <div className="bottom">
-            <div className="feels">
+            <div className="serving">
               {data.calories ? (
                 <p className="bold">{data.serving_size_g}g</p>
               ) : null}
               <p>Serving Size</p>
             </div>
-            <div className="humidity">
+            <div className="carb">
               {data.calories ? (
-                <p className="bold">{data.fat_total_g}g</p>
+                <p className="bold">{data.carbohydrates_total_g}g</p>
               ) : null}
-              <p>Fat Total</p>
+              <p>Carb. Count</p>
             </div>
-            <div className="wind">
-              {data.calories ? (
-                <p className="bold">{data.fat_saturated_g}g</p>
-              ) : null}
-              <p>Saturated Fat</p>
+            <div className="protein">
+              {data.calories ? <p className="bold">{data.protein_g}g</p> : null}
+              <p>Protein Count</p>
             </div>
           </div>
         )}

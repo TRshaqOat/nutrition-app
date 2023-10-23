@@ -114,11 +114,11 @@ function App() {
           {/* <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div> */}
-          {data.calories ? (
+          {/* {data.calories ? (
             <p className="description">
               Your recipe does not contain enough protein.
             </p>
-          ) : null}
+          ) : null} */}
         </div>
 
         {data.name !== undefined && (
